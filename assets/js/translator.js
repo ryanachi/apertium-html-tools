@@ -583,14 +583,14 @@ function populateTranslationList() {
     for(i = 0; i < numDstCols; i++) {
         var numDstLang = Math.ceil(dstLangs.length / numDstCols) * i;
         var dstLangCol = $('<div class="languageCol">').appendTo($('#dstLanguages .row'));
-        
+
         for(j = numDstLang; j < numDstLang + dstLangsPerCol; j++) {
             if(numDstLang < dstLangs.length) {
                 langCode = dstLangs[j];
                 langName = getLangByCode(langCode);
                 langType = 'languageName';
-                if(langCode.indexOf("_") !== -1) {
-                    langType += ' languageVariant';    
+                if(langCode.indexOf('_') !== -1) {
+                    langType += ' languageVariant';
                 }
                 dstLangCol.append(
                     $('<div class="' + langType + '"></div>')
@@ -633,7 +633,7 @@ function populateTranslationList() {
             var aVariant = a.split('_'), bVariant = b.split('_');
             var directCompare;
             try {
-            directCompare = getLangByCode(aVariant[0]).localeCompare(getLangByCode(bVariant[0]), sortLocale);
+                directCompare = getLangByCode(aVariant[0]).localeCompare(getLangByCode(bVariant[0]), sortLocale);
             }
             catch(e) {
                 directCompare = getLangByCode(aVariant[0]).localeCompare(getLangByCode(bVariant[0]));
@@ -663,11 +663,11 @@ function populateTranslationList() {
             else {
                 langsOnly.push(srcLangs[i]);
             }
-            }
+        }
 
         srcLangs = langsOnly.sort(compareLangCodes);
         for(i = 0; i < variantsOnly.length; i++) {
-            var baseLang = variantsOnly[i].split("_")[0];
+            var baseLang = variantsOnly[i].split('_')[0];
             for(j = 0; j < srcLangs.length; j++) {
                 if(baseLang === srcLangs[j]) {
                     srcLangs.splice(j + 1, 0, variantsOnly[i]);
@@ -680,13 +680,13 @@ function populateTranslationList() {
         variantsOnly = [];
 
         for(i = 0; i < dstLangs.length; i++) {
-            if(dstLangs[i].indexOf('_') != -1) {
+            if(dstLangs[i].indexOf('_') !== -1) {
                 variantsOnly.push(dstLangs[i]);
             }
             else {
                 langsOnly.push(dstLangs[i]);
             }
-            }
+        }
         dstLangs = langsOnly.sort(function (a, b) {
             var aPossible = pairs[curSrcLang] && pairs[curSrcLang].indexOf(a) !== -1;
             var bPossible = pairs[curSrcLang] && pairs[curSrcLang].indexOf(b) !== -1;
