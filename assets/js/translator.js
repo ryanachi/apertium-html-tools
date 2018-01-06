@@ -654,7 +654,7 @@ function populateTranslationList() {
         }
 
         var langsOnly = [];
-        var variantsOnly = [];    
+        var variantsOnly = [];
 
         for(i = 0; i < srcLangs.length; i++) {
             if(srcLangs[i].indexOf('_') !== -1) {
